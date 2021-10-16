@@ -86,3 +86,5 @@ const ContentContainer = styled.div`
 const ArticleContainer = styled.div`
     background: grey;
 `;
+
+// export default View;
