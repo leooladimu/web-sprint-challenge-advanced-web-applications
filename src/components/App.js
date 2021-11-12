@@ -14,6 +14,7 @@ const App = () => {
     <AppContainer>
       <LambdaHeader/>
       <Header/>
+      <PrivateRoute path="/privateRoute" component={PrivateRoute}/>
       <RouteContainer>
         <Route exact path="/">
           <Login/>
