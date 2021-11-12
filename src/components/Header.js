@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Header = () => {
     return(
         <HeaderStyle>
-            <p>Blogger Pro</p>
+            <p>Blogger Pro  〄</p>
             <MenuStyle>
                 <li><Link to="/">Login</Link></li>
                 <li><Link to="view">View</Link></li>
