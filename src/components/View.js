@@ -16,30 +16,31 @@ const View = (props) => {
         axiosWithAuth()
             .delete(`http://localhost:3000/api/articles/${id}`)
             .then((r) => {
-                setArticles(r.data);
+                setArticles(r.data)
+                push('/articles')
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
     }
 
     const handleEdit = (article) => {
-        // axiosWithAuth()
-        // .put(`http://localhost:3000/api/articles/${article.id}`, article)
-        // .then(r => {
-        //     setArticles(r.data)
-        //     setEditing(false)
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
-        push(`/setArticles/${id}`) 
+        axiosWithAuth()
+        .put(`http://localhost:3000/api/articles/${article.id}`, article)
+        .then(r => {
+            setArticles(r.data)
+            setEditing(false)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        // push(`/setArticles/${id}`) 
     }
 
-    const handleEditSelect = (id)=> {
+    const handleEditSelect = (id) => {
         setEditing(true);
         setEditId(id);
     }
 
-    const handleEditCancel = ()=>{
+    const handleEditCancel = (id) =>{
         setEditing(false);
     }
 
@@ -49,6 +50,7 @@ const View = (props) => {
             <ArticleContainer>
                 {
                     articles.map(article => {
+                        console.log('@', article);
                         return <ArticleDivider key={article.id}>
                             <Article key={article.id} article={article} handleDelete={handleDelete} handleEditSelect={handleEditSelect}/>
                         </ArticleDivider>
@@ -59,6 +61,7 @@ const View = (props) => {
             {
                 editing && <EditForm editId={editId} handleEdit={handleEdit} handleEditCancel={handleEditCancel}/>
             }
+            
         </ContentContainer>
     </ComponentContainer>);
 }
