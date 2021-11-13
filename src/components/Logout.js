@@ -12,7 +12,7 @@ const Logout = (props) => {
                 .post('http://localhost:3000/api/logout')
                 .then(r => {
                     console.log('')
-                  localStorage.removeItem("token");
+                  localStorage.removeItem('token');
                   history.push('/login');
                 }).catch((err) => console.log(err.message));
 
