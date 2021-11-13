@@ -3,15 +3,19 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Logout = (props) => {  
     
-    const Logout = (props)=> {
+    const Logout = (props) => {
+
         const { history } = props;
-        useEffect(()=> {
+
+        useEffect(() => {
             axiosWithAuth()
                 .post('http://localhost:3000/api/logout')
                 .then(r => {
+                    console.log('')
                   localStorage.removeItem("token");
                   history.push('/login');
                 }).catch((err) => console.log(err.message));
+
         }, [history]);
 
         return(<div></div>);
